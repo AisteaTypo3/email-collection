@@ -1,0 +1,60 @@
+# TYPO3 Email Collection Extension
+
+Diese leichtgewichtige TYPO3 v13 Extension ermöglicht es, E-Mail-Adressen von Benutzern im Frontend zu sammeln und den Zugriff auf bestimmte Seiten mit einem Cookie zu schützen.
+
+## Installation
+
+1. Kopieren Sie den Extension-Code in das Verzeichnis `typo3conf/ext/email_collection/`
+2. Installieren Sie die Extension im TYPO3-Backend unter "Extensions"
+3. Erstellen Sie eine Datenbank-Update, um die neue Tabelle anzulegen
+
+## Konfiguration
+
+### Frontend-Plugin einrichten
+
+1. Erstellen Sie eine neue Seite für das Registrierungsformular
+2. Fügen Sie ein neues Content-Element vom Typ "Plugin" hinzu
+3. Wählen Sie das Plugin "Email Collection: Registration" aus
+4. Geben Sie in den Flexform-Einstellungen die Zielseite an, zu der nach der Registrierung weitergeleitet werden soll
+
+### Geschützte Seiten konfigurieren
+
+1. Erstellen Sie eine oder mehrere Seiten, die mit dem Cookie geschützt werden sollen
+2. Notieren Sie sich die UIDs dieser Seiten
+3. Gehen Sie zu "Extensions → Konfiguration" und wählen Sie "email_collection"
+4. Tragen Sie die UIDs der geschützten Seiten als kommagetrennte Liste im Feld "protectedPages" ein
+5. Tragen Sie die UID der Registrierungsseite im Feld "registrationPageUid" ein
+
+## Anpassung
+
+Die Extension ist absichtlich einfach gehalten und kann leicht erweitert werden:
+
+1. Die Vorlage für das Registrierungsformular finden Sie unter `Resources/Private/Templates/Subscriber/Form.html`
+2. Die Vorlage für die geschützte Seite finden Sie unter `Resources/Private/Templates/Subscriber/Redirect.html`
+3. Sie können das Layout und das Design anpassen, indem Sie die Vorlagen ändern
+
+## Funktionsweise
+
+1. Benutzer geben ihre E-Mail-Adresse im Formular ein
+2. Die E-Mail-Adresse wird in der Datenbank gespeichert
+3. Ein Cookie wird gesetzt, das den Zugriff auf die geschützten Seiten erlaubt
+4. Beim Aufruf einer geschützten Seite wird das Cookie überprüft
+5. Wenn das Cookie nicht vorhanden ist, wird der Benutzer zur Registrierungsseite weitergeleitet
+
+## Erweiterungsmöglichkeiten
+
+Diese Extension kann wie folgt erweitert werden:
+
+- Hinzufügen weiterer Formularfelder für zusätzliche Benutzerdaten
+- Integration mit einem Newsletter-System
+- Implementierung einer Double-Opt-In-Funktion
+- Hinzufügen von CAPTCHA-Schutz
+- Erweiterung um eine Benutzerauthentifizierung
+- Hinzufügen von Statistikfunktionen
+
+## Technische Details
+
+- Die Extension nutzt den Extbase-Framework von TYPO3
+- Die E-Mail-Adressen werden in der Tabelle `tx_emailcollection_domain_model_subscriber` gespeichert
+- Der Cookie-Name und die Lebensdauer können in der Extension-Konfiguration angepasst werden
+- Die Überprüfung des Cookies erfolgt über einen Middleware-Stack in TYPO3

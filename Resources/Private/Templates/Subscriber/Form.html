@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+	<div class="email-collection-container">
+		<!-- Wenn E-Mail schon gespeichert ist und wir eine Zielseite haben, zeige Button -->
+		<f:if condition="{showButton} && {redirectPageId} > 0">
+			<f:then>
+				<div class="email-success-card">
+					<div class="success-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+						</svg>
+					</div>
+					<p class="success-message"><f:translate key="success.message" /></p>
+					<div class="button-container">
+						<f:link.page pageUid="{redirectPageId}" class="success-button">
+							<f:translate key="success.button" />
+						</f:link.page>
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<!-- Formular anzeigen, wenn noch keine E-Mail gespeichert ist -->
+				<div class="email-form-card">
+					<f:form action="save" object="{subscriber}" name="subscriber" class="email-form">
+						<div class="form-group">
+							<label for="email" class="form-label"><f:translate key="emailForm.label" /></label>
+							<f:form.textfield property="email" id="email" class="form-input" required="required" />
+						</div>
+						<div class="form-submit">
+							<f:form.submit value="{f:translate(key: 'emailForm.submit')}" class="submit-button" />
+						</div>
+					</f:form>
+				</div>
+			</f:else>
+		</f:if>
+	</div>
+</f:section>
+</html>

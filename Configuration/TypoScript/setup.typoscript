@@ -1,0 +1,28 @@
+# Basic plugin configuration
+plugin.tx_emailcollection_registration {
+    view {
+        templateRootPaths.0 = EXT:email_collection/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:email_collection/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:email_collection/Resources/Private/Layouts/
+    }
+
+    persistence {
+        # Default storage PID (wird durch das 'Record Storage Page' Feld überschrieben)
+        storagePid = {$plugin.tx_emailcollection_registration.persistence.storagePid}
+    }
+}
+
+# Content-Object-Konfiguration für die korrekte Rendering-Integration
+tt_content.list.20.emailcollection_registration = FLUIDTEMPLATE
+tt_content.list.20.emailcollection_registration {
+    pluginName = Registration
+    extensionName = EmailCollection
+    controller = Subscriber
+}
+
+module.tx_emailcollection_registration {
+    persistence {
+        # Default storage PID für Backend-Module
+        storagePid = {$module.tx_emailcollection_registration.persistence.storagePid}
+    }
+}

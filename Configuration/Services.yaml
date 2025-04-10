@@ -1,0 +1,30 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Vendor\EmailCollection\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  # Controllers explizit als public definieren
+  Vendor\EmailCollection\Controller\SubscriberController:
+    public: true
+
+  Vendor\EmailCollection\Controller\SettingsController:
+    public: true
+
+  # Update Wizard explizit registrieren
+  Vendor\EmailCollection\Updates\SetupDefaultSettings:
+    public: true
+    tags:
+      - name: 'install.updates'
+
+  # Middleware zur Prüfung der Cookies
+  Vendor\EmailCollection\Middleware\CookieCheckMiddleware:
+    tags:
+      - name: typo3.middleware
+        target: frontend
+        after: typo3/cms-frontend/prepare-tsfe
+        before: typo3/cms-frontend/shortcut-and-mountpoint-redirect

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2023-11-15T12:00:00Z">
+        <header>
+            <description>Language file for Email Collection Extension</description>
+        </header>
+        <body>
+            <trans-unit id="emailForm.label">
+                <source>E-Mail Adresse</source>
+            </trans-unit>
+            <trans-unit id="emailForm.submit">
+                <source>Absenden</source>
+            </trans-unit>
+            <trans-unit id="success.message">
+                <source>Vielen Dank! Ihre E-Mail wurde erfolgreich gespeichert.</source>
+            </trans-unit>
+            <trans-unit id="success.button">
+                <source>Weiter zur geschützten Seite</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

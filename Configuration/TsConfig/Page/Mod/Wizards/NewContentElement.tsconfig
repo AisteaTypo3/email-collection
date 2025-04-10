@@ -1,0 +1,22 @@
+mod {
+    wizards {
+        newContentElement {
+            wizardItems {
+                plugins {
+                    elements {
+                        emailcollection_registration { // Der Key deines Plugin-Elements
+                            iconIdentifier = emailcollection-user-plugin-registration // Verwende den registrierten Identifier
+                            title = LLL:EXT:email_collection/Resources/Private/Language/locallang_be.xlf:emailcollection_registration_title
+                            description = LLL:EXT:email_collection/Resources/Private/Language/locallang_be.xlf:emailcollection_registration_description
+                            tt_content_defValues {
+                                CType = list
+                                list_type = emailcollection_registration
+                            }
+                        }
+                    }
+                    show := addToList(emailcollection_registration)
+                }
+            }
+        }
+    }
+}

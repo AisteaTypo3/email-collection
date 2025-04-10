@@ -1,0 +1,14 @@
+# customcategory=email_collection=Email Collection Extension
+plugin.tx_emailcollection_registration {
+    persistence {
+        # cat=email_collection/storage; type=int+; label=Storage PID: Page ID where subscriber records are stored
+        storagePid = 0
+    }
+}
+
+module.tx_emailcollection_registration {
+    persistence {
+        # cat=email_collection/storage; type=int+; label=Default Storage PID: Default page ID for backend modules
+        storagePid = 0
+    }
+}

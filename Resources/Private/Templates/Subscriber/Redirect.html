@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+	<f:flashMessages />
+	<div class="tx-email-collection-protected-content">
+		<f:if condition="{cookieChecked}">
+			<f:then>
+				<div class="alert alert-success">
+					Sie haben Zugriff auf diese Seite.
+				</div>
+				<!-- Geschützter Inhalt hier einfügen -->
+			</f:then>
+			<f:else>
+				<div class="alert alert-danger">
+					Sie haben keinen Zugriff auf diese Seite. Bitte geben Sie zuerst Ihre E-Mail-Adresse ein.
+				</div>
+			</f:else>
+		</f:if>
+	</div>
+</f:section>
+</html>
