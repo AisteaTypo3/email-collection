@@ -1,5 +1,5 @@
 {
-  "name": "vendor/email-collection",
+  "name": "aisteatypo3/email-collection",
   "type": "typo3-cms-extension",
   "description": "Simple email collection with page access control",
   "license": "GPL-2.0-or-later",
